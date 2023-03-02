@@ -38,35 +38,35 @@ public class NguyenToTester {
         System.out.println("AFTER EACH");
     }
     
-//    @Test
-//    public void testEvenNumber() {
-//        int n = 2;
-//        boolean expected = true;
-//        boolean actual = NguyenToService.isNguyenTo(n);
-//        
-//        Assertions.assertEquals(expected, actual);
-//    }
-//    
-//    @Test
-//    public void testEvenNumber2() {
-//        int n = 4;
-//        boolean actual = NguyenToService.isNguyenTo(n);
-//        Assertions.assertFalse(actual, "Cai thuat toan sai!!!");
-//    }
-//    
-//    @Test
-//    public void testOddNumber() {
-//        int n = 5;
-//        boolean actual = NguyenToService.isNguyenTo(n);
-//        Assertions.assertTrue(actual);
-//    }
-//    
-//    @Test
-//    public void testException() {
-//        Assertions.assertThrows(ArithmeticException.class, () -> {
-//            NguyenToService.isNguyenTo(-5);
-//        });
-//    }
+    @Test
+    public void testEvenNumber() {
+        int n = 2;
+        boolean expected = true;
+        boolean actual = NguyenToService.isNguyenTo(n);
+        
+        Assertions.assertEquals(expected, actual);
+    }
+    
+    @Test
+    public void testEvenNumber2() {
+        int n = 4;
+        boolean actual = NguyenToService.isNguyenTo(n);
+        Assertions.assertFalse(actual, "Cai thuat toan sai!!!");
+    }
+    
+    @Test
+    public void testOddNumber() {
+        int n = 5;
+        boolean actual = NguyenToService.isNguyenTo(n);
+        Assertions.assertTrue(actual);
+    }
+    
+    @Test
+    public void testException() {
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            NguyenToService.isNguyenTo(-5);
+        });
+    }
     
     @Test
     public void testTimeout() {
