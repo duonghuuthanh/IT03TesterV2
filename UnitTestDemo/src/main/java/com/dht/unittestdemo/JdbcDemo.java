@@ -6,11 +6,7 @@ package com.dht.unittestdemo;
 
 import com.dht.pojo.Question;
 import com.dht.services.QuestionService;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  *
