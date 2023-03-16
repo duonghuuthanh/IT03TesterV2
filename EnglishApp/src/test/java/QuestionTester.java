@@ -26,6 +26,7 @@ public class QuestionTester {
     // Q2 --> category != null & category dung trong dsd dang co
     // Q3 --> co dung 4 phuong an, chi 1 phuong an dung
     private static Connection conn ;
+    private static QuestionService s;
     
 //    static {
 //        try {
@@ -42,6 +43,8 @@ public class QuestionTester {
         } catch (SQLException ex) {
             Logger.getLogger(QuestionTester.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        s = new QuestionService();
     }
     
     @AfterAll
@@ -79,5 +82,43 @@ public class QuestionTester {
         } catch (SQLException ex) {
             Logger.getLogger(QuestionTester.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    @Test
+    public void testSearch() {
+        try {
+            List<Question> questions = s.getQuestions("you");
+            Assertions.assertEquals(3, questions.size());
+            for (Question q: questions)
+                Assertions.assertTrue(q.getContent().toLowerCase().contains("you"));
+        } catch (SQLException ex) {
+            Logger.getLogger(QuestionTester.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+    }
+    
+    @Test
+    public void testDelete() {
+        String id = "62c27e6f-fef3-4bb8-8ea4-46dba746e37b";
+        // backup database
+        // fixtures
+        try {
+            boolean actual = s.deleteQuestion(id);
+            Assertions.assertTrue(actual);
+            
+            PreparedStatement stm = conn.prepareCall("SELECT * FROM question WHERE id=?");
+            stm.setString(1, id);
+            
+            ResultSet rs = stm.executeQuery();
+            Assertions.assertFalse(rs.next());
+            
+            stm = conn.prepareCall("SELECT * FROM choice WHERE question_id=?");
+            stm.setString(1, id);
+            rs = stm.executeQuery();
+            Assertions.assertFalse(rs.next());
+        } catch (SQLException ex) {
+            Logger.getLogger(QuestionTester.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 }

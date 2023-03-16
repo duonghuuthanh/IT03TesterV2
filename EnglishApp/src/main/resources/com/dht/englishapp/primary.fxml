@@ -3,7 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -48,12 +47,7 @@
             <Button mnemonicParsing="false" onAction="#addQuestionHandler" text="Thêm câu hỏi" />
          </children>
       </HBox>
-      <TextField />
-      <TableView prefHeight="262.0" prefWidth="450.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
-      </TableView>
+      <TextField fx:id="txtSearch" />
+      <TableView fx:id="tbQuestions" prefHeight="262.0" prefWidth="450.0" />
    </children>
 </VBox>
